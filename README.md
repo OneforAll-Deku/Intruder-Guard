@@ -11,6 +11,15 @@ IntruderGuard monitors your Windows Lock Screen and automatically snaps a pictur
 - **Event-Driven**: Uses Windows Event Log (Event ID 4625) for zero-latency triggers.
 - **Privacy Focused**: All photos are stored locally on your machine.
 
+## 🌐 Landing Page
+
+The project also includes a modern, responsive landing page built with **React** and **Vite**. You can find it in the `landing-page/` directory.
+
+### 🛠️ How to Run the Landing Page Locally:
+1. Navigate to the folder: `cd landing-page`
+2. Install dependencies: `npm install`
+3. Start the dev server: `npm run dev`
+
 ## 🚀 Installation
 
 1. **Run `Setup_Python.bat`**
