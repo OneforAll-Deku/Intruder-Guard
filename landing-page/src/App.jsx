@@ -209,6 +209,39 @@ export default function App() {
               </p>
           </section>
 
+          <section className="readable-section jitter-slower" style={{ border: '8px solid var(--color-crimson)', background: 'var(--color-black)', color: 'white' }}>
+              <div className="section-label" style={{ color: '#00FF41' }}>DEV_ENVIRONMENT // LOCALHOST</div>
+              <h2 className="title-large" style={{ color: 'white' }}>INSTALL <span className="accent-text">GUIDE</span></h2>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '2rem' }}>
+                  <div style={{ background: 'var(--color-paper)', color: 'var(--color-black)', padding: '1.5rem', border: '4px solid var(--color-white)' }}>
+                      <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 900, marginBottom: '0.5rem' }}>STEP 01: GET THE CORE ENGINE</h4>
+                      <p>Clone the repository or download the ZIP to your local Windows environment.</p>
+                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1rem', marginTop: '1rem', borderLeft: '4px solid #00FF41', fontWeight: 900 }}>
+                          git clone https://github.com/OneforAll-Deku/Intruder-Guard.git
+                      </code>
+                  </div>
+                  
+                  <div style={{ background: 'var(--color-paper)', color: 'var(--color-black)', padding: '1.5rem', border: '4px solid var(--color-white)' }}>
+                      <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 900, marginBottom: '0.5rem' }}>STEP 02: AUTOMATED SETUP</h4>
+                      <p>Right-click the <code style={{fontFamily:'var(--font-mono)'}}>Setup_Python.bat</code> file and choose <strong>Run as Administrator</strong>. It handles all dependencies, configures your environment, and starts the system.</p>
+                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1rem', marginTop: '1rem', borderLeft: '4px solid #00FF41', fontWeight: 900 }}>
+                          [1] Right-click: Setup_Python.bat<br/>
+                          [2] Click: Run as Administrator
+                      </code>
+                  </div>
+
+                  <div style={{ background: 'var(--color-paper)', color: 'var(--color-black)', padding: '1.5rem', border: '4px solid var(--color-white)' }}>
+                      <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 900, marginBottom: '0.5rem' }}>STEP 03: MANUAL MODE (Alternative)</h4>
+                      <p>If the batch script fails, manually install the <code>requirements.txt</code> file and run the main app yourself.</p>
+                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1rem', marginTop: '1rem', borderLeft: '4px solid #00FF41', fontWeight: 900 }}>
+                          pip install -r requirements.txt<br/>
+                          python intruder_guard.py
+                      </code>
+                  </div>
+              </div>
+          </section>
+
           {isVaultOpen && (
               <div className="vault-overlay">
                   <div className="vault-container jitter-el" style={{ border: '8px solid var(--color-black)' }}>
