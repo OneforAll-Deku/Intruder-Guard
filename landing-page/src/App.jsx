@@ -34,15 +34,26 @@ export default function App() {
 
   useEffect(() => {
     // 0. LIVE METRICS TRACKING (Zero Blocking / Optimistic UI)
-    fetch('https://api.counterapi.dev/v1/intruderguard_live_stats_final/visits/up')
+    // Local visit counter that guarantees +1 on every reload for the user
+    const currentReloads = parseInt(localStorage.getItem('ig_local_visits') || '0') + 1;
+    localStorage.setItem('ig_local_visits', currentReloads);
+    
+    fetch('https://api.counterapi.dev/v1/intruderguard_vTest_final/visits/up')
       .then(res => res.json())
-      .then(data => setPageVisits(399 + data.count))
-      .catch(() => setPageVisits('400'));
+      .then(data => setPageVisits(399 + data.count + currentReloads))
+      .catch(() => setPageVisits(400 + currentReloads));
       
-    fetch('https://api.counterapi.dev/v1/intruderguard_live_stats_final/downloads')
+    fetch('https://api.counterapi.dev/v1/intruderguard_vTest_final/downloads')
       .then(res => res.json())
       .then(data => setDownloads(5 + data.count))
-      .catch(() => setDownloads('5'));
+      .catch(() => setDownloads(5));
+
+    // Simulate live concurrent traffic
+    const trafficInterval = setInterval(() => {
+      if (Math.random() > 0.6) {
+        setPageVisits(prev => prev + 1);
+      }
+    }, 3000);
     // 1. SIMPLE JITTER FOR BRAND MOTION
     const elements = document.querySelectorAll('.jitter-el')
     const jitterInterval = setInterval(() => {
@@ -67,12 +78,13 @@ export default function App() {
     return () => {
         clearInterval(jitterInterval)
         clearInterval(feedInterval)
+        clearInterval(trafficInterval)
     }
   }, [])
 
   const handleDownload = () => {
     setDownloads(prev => (typeof prev === 'number' ? prev + 1 : parseInt(String(prev).replace(/,/g, '')) + 1));
-    fetch('https://api.counterapi.dev/v1/intruderguard_live_stats_final/downloads/up').catch(console.error);
+    fetch('https://api.counterapi.dev/v1/intruderguard_vTest_final/downloads/up').catch(console.error);
     window.open('https://github.com/OneforAll-Deku/Intruder-Guard', '_blank');
   };
 
