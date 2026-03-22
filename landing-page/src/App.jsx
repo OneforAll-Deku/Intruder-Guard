@@ -3,8 +3,22 @@ import { Camera, User, Clock, Lock, ShieldCheck, Activity } from 'lucide-react'
 import { InteractiveFolder } from './InteractiveFolder'
 import './index.css'
 
+const DUMMY_IMAGES = [
+  { path: '/images/CAPTURE_20260322_1000.jpg', size: '29KB' },
+  { path: '/images/CAPTURE_20260322_1001.png', size: '34KB' },
+  { path: '/images/CAPTURE_20260322_1002.jpg', size: '37KB' },
+  { path: '/images/CAPTURE_20260322_1005.jpg', size: '26KB' },
+  { path: '/images/CAPTURE_20260322_1004.png', size: '24KB' },
+  { path: '/images/CAPTURE_20260322_1003.png', size: '38KB' },
+  { path: '/images/CAPTURE_20260322_1006.jpg', size: '26KB' },
+  { path: '/images/CAPTURE_20260322_1007.png', size: '543KB' },
+  { path: '/images/CAPTURE_20260322_1008.png', size: '306KB' },
+  { path: '/images/CAPTURE_20260322_1009.jpg', size: '14KB' }
+];
+
 export default function App() {
   const [isVaultOpen, setIsVaultOpen] = useState(false)
+  const [selectedFile, setSelectedFile] = useState(0);
   const [pageVisits, setPageVisits] = useState('...');
   const [downloads, setDownloads] = useState('...');
   const [logs, setLogs] = useState([
@@ -12,6 +26,11 @@ export default function App() {
     "KERNEL_HOOK_ACTIVE",
     "POLLING_LOGS..."
   ])
+
+  // Random Data Generator for "Renamed" file labels
+  const getRandomDateLabel = (seed) => {
+    return DUMMY_IMAGES[seed].path.split('/').pop().toUpperCase();
+  };
 
   useEffect(() => {
     // 0. LIVE METRICS TRACKING (Zero Blocking / Optimistic UI)
@@ -52,24 +71,19 @@ export default function App() {
   }, [])
 
   const handleDownload = () => {
-    // Optimistic UI bump for zero-lag feeling
     setDownloads(prev => (typeof prev === 'number' ? prev + 1 : parseInt(String(prev).replace(/,/g, '')) + 1));
     fetch('https://api.counterapi.dev/v1/intruderguard_vault_v2/downloads/up').catch(console.error);
-    
-    // Simulate opening repo/downloading
-    window.open('https://github.com/OneforAll-Deku/NONO', '_blank');
+    window.open('https://github.com/OneforAll-Deku/Intruder-Guard', '_blank');
   };
 
   return (
     <>
-      {/* 0. HEADER BANNER */}
       <header className="fixed-banner top">
         [SEC_STATUS: ACTIVE] // INTRUDERGUARD V2.0 // DEPLOYED: GHOST_PROCESS // SYSTEM: PC_ADMIN //
       </header>
 
       <main style={{ paddingTop: '2.5rem', paddingBottom: '5rem' }}>
           
-          {/* 1. PRODUCT HERO (Simplified from before, high impact) */}
           <section className="readable-section jitter-el" style={{ border: '12px solid var(--color-black)', background: 'var(--color-white)', marginTop: '2rem', padding: '3.5rem' }}>
               <div style={{ display: 'flex', gap: '1rem', fontStyle: 'italic', fontWeight: 900, fontSize: '0.8rem', opacity: 0.6, marginBottom: '1.5rem' }}>
                   <span>V2.0 STABLE</span> / <span>PYTHON 3.13</span> / <span>WINDOWS 11 COMPATIBLE</span>
@@ -84,11 +98,10 @@ export default function App() {
 
               <div style={{ marginTop: '2.5rem', display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
                   <button className="cta-massive flicker" onClick={handleDownload}>DOWNLOAD INSTALLER (.bat)</button>
-                  <button className="cta-massive secondary" onClick={() => window.open('https://github.com/OneforAll-Deku/NONO', '_blank')}>VIEW REPO</button>
+                  <button className="cta-massive secondary" onClick={() => window.open('https://github.com/OneforAll-Deku/Intruder-Guard', '_blank')}>VIEW REPO</button>
               </div>
           </section>
 
-          {/* 2. SYSTEM PRE-REQUISITES BAR */}
           <section className="container" style={{ maxWidth: '1300px', margin: '0 auto' }}>
               <div className="req-bar">
                   <div className="req-item">
@@ -110,7 +123,6 @@ export default function App() {
               </div>
           </section>
 
-          {/* 3. THE ARCHITECTURE (NEW SECTION) */}
           <section className="readable-section jitter-slower">
               <div className="section-label">SYSTEM_FLOW // PIPELINE</div>
               <h2 className="title-large">HOW DO WE <span className="accent-text">OP_DETECT</span>?</h2>
@@ -136,28 +148,19 @@ export default function App() {
               </p>
           </section>
 
-          {/* 4. GALLERY PREVIEW (NEW SECTION) */}
           <section className="readable-section dark jitter-el" style={{ background: 'var(--color-black)' }}>
               <div className="section-label" style={{ color: 'var(--color-gold)' }}>BIOMETRIC_OUTPUT // EVIDENCE</div>
               <h2 className="title-large" style={{ color: 'var(--color-gold)' }}>RECENTLY <span style={{ color: 'var(--color-crimson)' }}>SPOTTED</span></h2>
               
               <div className="gallery-grid">
-                  <div className="gallery-item">
-                      <div className="gallery-overlay">FAIL_001 // TRAP_ID: 9812</div>
-                      <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}>BIOMETRIC_DATA_01</div>
-                  </div>
-                  <div className="gallery-item" style={{ transform: 'rotate(2deg)' }}>
-                      <div className="gallery-overlay">FAIL_002 // TRAP_ID: 9815</div>
-                      <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}>BIOMETRIC_DATA_02</div>
-                  </div>
-                  <div className="gallery-item" style={{ transform: 'rotate(-1deg)' }}>
-                      <div className="gallery-overlay">FAIL_003 // TRAP_ID: 9819</div>
-                      <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}>BIOMETRIC_DATA_03</div>
-                  </div>
-                  <div className="gallery-item" style={{ transform: 'translateY(1rem)' }}>
-                      <div className="gallery-overlay">FAIL_004 // TRAP_ID: 9822</div>
-                      <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555', fontSize: '0.8rem' }}>BIOMETRIC_DATA_04</div>
-                  </div>
+                  {DUMMY_IMAGES.slice(0, 4).map((img, i) => (
+                      <div key={i} className="gallery-item" style={{ transform: i % 2 === 0 ? 'rotate(2deg)' : 'rotate(-1deg)' }}>
+                          <div className="gallery-overlay">FAIL_00{i+1} // TRAP_ID: {9812 + i*3}</div>
+                          <div style={{ height: '100%', overflow: 'hidden' }}>
+                              <img src={img.path} alt={`bio_${i}`} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(150%)' }} />
+                          </div>
+                      </div>
+                  ))}
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4rem', gap: '3rem' }}>
@@ -194,35 +197,53 @@ export default function App() {
               </p>
           </section>
 
-          {/* VAULT MODAL */}
           {isVaultOpen && (
               <div className="vault-overlay">
-                  <div className="vault-container jitter-el">
-                      <div className="vault-header">
-                          <h2 className="title-large" style={{ fontSize: '3rem', margin: 0 }}>LOCAL <span className="accent-text">VAULT</span></h2>
-                          <button className="close-vault-btn" onClick={() => setIsVaultOpen(false)}>
+                  <div className="vault-container jitter-el" style={{ border: '8px solid var(--color-black)' }}>
+                      <div className="vault-header" style={{ borderBottom: '4px solid var(--color-black)', padding: '1rem 2rem' }}>
+                          <h2 className="title-large" style={{ fontSize: '3.5rem', margin: 0 }}>LOCAL <span className="accent-text">VAULT</span></h2>
+                          <button className="close-vault-btn" onClick={() => setIsVaultOpen(false)} style={{ background: 'var(--color-black)', color: 'white', padding: '10px 20px', fontSize: '1.2rem', fontWeight: 900, border: '4px solid var(--color-crimson)' }}>
                               [ CLOSE ] <span className="close-icon">×</span>
                           </button>
                       </div>
                       
-                      <div className="vault-grid">
-                          {[...Array(12)].map((_, i) => (
-                              <div key={i} className="vault-file">
-                                  <div style={{ background: '#ddd', height: '120px', marginBottom: '0.5rem' }}></div>
-                                  <div>IMG_LOG_{String(i+1).padStart(3, '0')}.PNG</div>
-                                  <div style={{ fontSize: '0.6rem', opacity: 0.5 }}>SIZE: {Math.floor(Math.random() * 500) + 100}KB</div>
+                      <div className="vault-grid" style={{ padding: '2rem', flex: 1, overflowY: 'auto' }}>
+                          {DUMMY_IMAGES.map((img, i) => (
+                              <div 
+                                key={i} 
+                                className={`vault-file ${selectedFile === i ? 'active' : ''}`} 
+                                onClick={() => setSelectedFile(i)}
+                                style={{ 
+                                    background: selectedFile === i ? 'var(--color-crimson)' : 'transparent',
+                                    color: selectedFile === i ? 'white' : 'black',
+                                    border: '2px solid var(--color-black)',
+                                    padding: '0.8rem',
+                                    cursor: 'pointer'
+                                }}
+                              >
+                                  <div style={{ background: '#ddd', height: '150px', marginBottom: '0.5rem', overflow: 'hidden', border: '1px solid black' }}>
+                                      <img src={img.path} alt="captured" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                  </div>
+                                  <div style={{ fontWeight: 900, fontSize: '0.8rem' }}>{getRandomDateLabel(i)}</div>
+                                  <div style={{ fontSize: '0.7rem', opacity: 0.7 }}>SIZE: {img.size}</div>
                               </div>
                           ))}
                       </div>
 
-                      <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '2px dashed var(--color-black)', fontFamily: 'var(--font-mono)', fontSize: '0.7rem' }}>
-                          [ STATUS: SCANNING_GALLERY_DIR ] // [ TOTAL_EVIDENCE: 12_OBJECTS ]
+                      <div style={{ 
+                          background: 'var(--color-bone)', 
+                          padding: '1rem 2rem', 
+                          borderTop: '4px dashed var(--color-black)', 
+                          fontFamily: 'var(--font-mono)', 
+                          fontSize: '1rem', 
+                          fontWeight: 900 
+                      }}>
+                          [ STATUS: SCANNING_GALLERY_DIR ] // [ TOTAL_EVIDENCE: {DUMMY_IMAGES.length}_OBJECTS ]
                       </div>
                   </div>
               </div>
           )}
 
-          {/* 5. LIVE STATS BANNER */}
           <section className="stat-banner container jitter-slower">
               <div className="stat-item">
                   <h2>{pageVisits}</h2>
@@ -238,7 +259,6 @@ export default function App() {
               </div>
           </section>
 
-          {/* 6. TECHNICAL FAQ (NEW SECTION) */}
           <section className="readable-section" style={{ border: '4px solid var(--color-black)' }}>
               <div className="section-label">FREQUENTLY_ASKED // FAQ</div>
               <h2 className="title-large">COMMON <span className="accent-text">QUERIES</span></h2>
@@ -263,7 +283,6 @@ export default function App() {
               </div>
           </section>
 
-          {/* 7. LIVE DEBUG TERMINAL */}
           <section className="readable-section" style={{ borderStyle: 'dotted' }}>
               <div className="section-label">LIVE_TELEMETRY // GHOST_CONSOLE</div>
               <h2 className="title-large">TERMINAL <span className="accent-text">FEED</span></h2>
@@ -279,7 +298,6 @@ export default function App() {
 
       </main>
 
-      {/* FOOTER BANNER */}
       <footer className="fixed-banner bottom">
         [PROTECT_CORE] // [EVIDENCE_PERSIST] // [SILENT_GUARD] // INTRUDERGUARD 2026 //
       </footer>
