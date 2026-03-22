@@ -19,8 +19,8 @@ const DUMMY_IMAGES = [
 export default function App() {
   const [isVaultOpen, setIsVaultOpen] = useState(false)
   const [selectedFile, setSelectedFile] = useState(0);
-  const [pageVisits, setPageVisits] = useState('...');
-  const [downloads, setDownloads] = useState('...');
+  const [pageVisits, setPageVisits] = useState(400);
+  const [downloads, setDownloads] = useState(5);
   const [logs, setLogs] = useState([
     "BOOTSTRAP_READY",
     "KERNEL_HOOK_ACTIVE",
@@ -34,15 +34,15 @@ export default function App() {
 
   useEffect(() => {
     // 0. LIVE METRICS TRACKING (Zero Blocking / Optimistic UI)
-    fetch('https://api.counterapi.dev/v1/intruderguard_vault_v2/visits/up')
+    fetch('https://api.counterapi.dev/v1/intruderguard_live_stats_final/visits/up')
       .then(res => res.json())
-      .then(data => setPageVisits(data.count))
-      .catch(() => setPageVisits('12.4K+'));
+      .then(data => setPageVisits(399 + data.count))
+      .catch(() => setPageVisits('400'));
       
-    fetch('https://api.counterapi.dev/v1/intruderguard_vault_v2/downloads')
+    fetch('https://api.counterapi.dev/v1/intruderguard_live_stats_final/downloads')
       .then(res => res.json())
-      .then(data => setDownloads(data.count))
-      .catch(() => setDownloads('1,852'));
+      .then(data => setDownloads(5 + data.count))
+      .catch(() => setDownloads('5'));
     // 1. SIMPLE JITTER FOR BRAND MOTION
     const elements = document.querySelectorAll('.jitter-el')
     const jitterInterval = setInterval(() => {
@@ -72,7 +72,7 @@ export default function App() {
 
   const handleDownload = () => {
     setDownloads(prev => (typeof prev === 'number' ? prev + 1 : parseInt(String(prev).replace(/,/g, '')) + 1));
-    fetch('https://api.counterapi.dev/v1/intruderguard_vault_v2/downloads/up').catch(console.error);
+    fetch('https://api.counterapi.dev/v1/intruderguard_live_stats_final/downloads/up').catch(console.error);
     window.open('https://github.com/OneforAll-Deku/Intruder-Guard', '_blank');
   };
 
