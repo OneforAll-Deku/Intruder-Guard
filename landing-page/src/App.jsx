@@ -120,18 +120,27 @@ export default function App() {
               <div className="section-label">SYSTEM_FLOW // PIPELINE</div>
               <h2 className="title-large">HOW DO WE <span className="accent-text">OP_DETECT</span>?</h2>
               
-              <div className="pipeline-container">
-                  <pre style={{ fontSize: '1rem', lineHeight: 1.2 }}>
-{`
-[ OS KERNEL ] --------> [ EVENT LOG: 4625 ] --------> [ TASK SCHEDULER: ADMIN ]
-                                                                 |
-                                                                 v
-[ GALLERY FOLDER ] <---- [ PYTHON GHOST WORKER ] <---- [ TRIGGER: BOOTSTRAP ]
-       |                         |
-       v                         v
-[ SPOTTED DATABASE ]    [ CV2_CAPTURE / 0.2ms DELAY ]
-`}
-                  </pre>
+              <div className="pipeline-grid">
+                  <div className="pipeline-node">
+                      <span className="node-id">SRC_01</span>
+                      <h4>OS KERNEL</h4>
+                  </div>
+                  <div className="pipeline-node">
+                      <span className="node-id">EVT_HOOK</span>
+                      <h4>EVENT 4625</h4>
+                  </div>
+                  <div className="pipeline-node">
+                      <span className="node-id">TRIGGER_SYS</span>
+                      <h4>SCHTASKS</h4>
+                  </div>
+                  <div className="pipeline-node">
+                      <span className="node-id">WORKER_GHOST</span>
+                      <h4>PYTHON_CV2</h4>
+                  </div>
+                  <div className="pipeline-node">
+                      <span className="node-id">FORENSIC_DB</span>
+                      <h4>SECURE_VAULT</h4>
+                  </div>
               </div>
 
               <p style={{ fontWeight: 700, fontSize: '1.2rem', marginTop: '1.5rem' }}>
@@ -194,30 +203,30 @@ export default function App() {
               <div className="section-label" style={{ color: '#00FF41' }}>DEV_ENVIRONMENT // LOCALHOST</div>
               <h2 className="title-large" style={{ color: 'white' }}>INSTALL <span className="accent-text">GUIDE</span></h2>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '2rem' }}>
-                  <div style={{ background: 'var(--color-paper)', color: 'var(--color-black)', padding: '1.5rem', border: '4px solid var(--color-white)' }}>
-                      <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 900, marginBottom: '0.5rem' }}>STEP 01: GET THE CORE ENGINE</h4>
-                      <p>Clone the repository or download the ZIP to your local Windows environment.</p>
-                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1rem', marginTop: '1rem', borderLeft: '4px solid #00FF41', fontWeight: 900 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2.5rem', marginTop: '3rem' }}>
+                  <div className="guide-step-card">
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.5rem', color: 'var(--color-crimson)', marginBottom: '1rem' }}>01. GET THE CORE</h4>
+                      <p style={{ fontWeight: 700, opacity: 0.7, marginBottom: '1.5rem' }}>Clone the repository to your local Windows environment.</p>
+                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1.5rem', borderLeft: '8px solid var(--color-crimson)', fontSize: '0.9rem', fontWeight: 900 }}>
                           git clone https://github.com/OneforAll-Deku/Intruder-Guard.git
                       </code>
                   </div>
                   
-                  <div style={{ background: 'var(--color-paper)', color: 'var(--color-black)', padding: '1.5rem', border: '4px solid var(--color-white)' }}>
-                      <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 900, marginBottom: '0.5rem' }}>STEP 02: AUTOMATED SETUP</h4>
-                      <p>Right-click the <code style={{fontFamily:'var(--font-mono)'}}>Setup_Python.bat</code> file and choose <strong>Run as Administrator</strong>. It handles all dependencies, configures your environment, and starts the system.</p>
-                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1rem', marginTop: '1rem', borderLeft: '4px solid #00FF41', fontWeight: 900 }}>
+                  <div className="guide-step-card">
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.5rem', color: 'var(--color-crimson)', marginBottom: '1rem' }}>02. AUTOMATED DEPLOY</h4>
+                      <p style={{ fontWeight: 700, opacity: 0.7, marginBottom: '1.5rem' }}>Run the bootstrap script as Administrator to configure the kernel hooks.</p>
+                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1.5rem', borderLeft: '8px solid var(--color-crimson)', fontSize: '0.9rem', fontWeight: 900 }}>
                           [1] Right-click: Setup_Python.bat<br/>
                           [2] Click: Run as Administrator
                       </code>
                   </div>
 
-                  <div style={{ background: 'var(--color-paper)', color: 'var(--color-black)', padding: '1.5rem', border: '4px solid var(--color-white)' }}>
-                      <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', fontWeight: 900, marginBottom: '0.5rem' }}>STEP 03: MANUAL MODE (Alternative)</h4>
-                      <p>If the batch script fails, manually install the <code>requirements.txt</code> file and run the main app yourself.</p>
-                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1rem', marginTop: '1rem', borderLeft: '4px solid #00FF41', fontWeight: 900 }}>
-                          pip install -r requirements.txt<br/>
-                          python intruder_guard.py
+                  <div className="guide-step-card">
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.5rem', color: 'var(--color-crimson)', marginBottom: '1rem' }}>03. ACTIVATE CORE</h4>
+                      <p style={{ fontWeight: 700, opacity: 0.7, marginBottom: '1.5rem' }}>Open the dashboard, click "ACTIVATE" and lock your screen.</p>
+                      <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1.5rem', borderLeft: '8px solid var(--color-crimson)', fontSize: '0.9rem', fontWeight: 900 }}>
+                          python intruder_guard.py<br/>
+                          Status: ACTIVATED
                       </code>
                   </div>
               </div>
@@ -270,14 +279,23 @@ export default function App() {
               </div>
           )}
 
-          <section className="stat-banner container jitter-slower">
-              <div className="stat-item">
-                  <h2>{downloads}</h2>
-                  <p>INSTALLS</p>
+          <section className="stat-banner container jitter-slower" style={{ justifyContent: 'center', gap: '8rem' }}>
+              <div className="stat-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <ShieldCheck size={40} className="accent-text" />
+                    <h2 style={{ fontSize: '5rem', margin: 0 }}>{downloads}</h2>
+                  </div>
+                  <p style={{ letterSpacing: '3px', opacity: 0.8 }}>TOTAL_INSTALLS</p>
               </div>
-              <div className="stat-item" style={{ borderLeft: '2px solid rgba(255,255,255,0.1)', paddingLeft: '4rem' }}>
-                <div style={{ opacity: 0.8, fontSize: '1.2rem', fontWeight: 900 }}>0.2s</div>
-                <p>TRIGGER LATENCY</p>
+              
+              <div style={{ width: '4px', height: '100px', background: 'rgba(255,255,255,0.1)', alignSelf: 'center' }}></div>
+
+              <div className="stat-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <Activity size={40} style={{ color: '#00FF41' }} />
+                    <h2 style={{ fontSize: '5rem', margin: 0, color: '#00FF41' }}>0.2<span style={{ fontSize: '2rem' }}>s</span></h2>
+                  </div>
+                  <p style={{ letterSpacing: '3px', opacity: 0.8 }}>TRIGGER_LATENCY</p>
               </div>
           </section>
 
