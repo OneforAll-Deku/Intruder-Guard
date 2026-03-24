@@ -1,63 +1,65 @@
-# IntruderGuard (Python Version)
+# 🛡️ IntruderGuard: The Ghost in the Kernel
 
-**A Windows security application that captures webcam photos on failed login attempts.**
+**Automatic physical security for Windows.**  
+IntruderGuard is a high-performance system utility that monitors your Windows Lock Screen. It captures photographic evidence the moment someone tries to guess your password—silently, instantly, and persistently.
 
-IntruderGuard monitors your Windows Lock Screen and automatically snaps a picture of anyone who enters an incorrect password. It runs silently in the background as a SYSTEM service, ensuring it works **even after a system restart** before anyone logs in.
+---
 
-## 🎯 Features
-- **Automatic Webcam Capture**: Takes a photo instantly when a wrong password is entered at the Lock Screen.
-- **Boot-Persistent Protection**: Runs via Windows Task Scheduler as `SYSTEM`, so it works immediately after booting up.
-- **Modern UI**: Built with `customtkinter` for a sleek, dark-themed management interface.
-- **Event-Driven**: Uses Windows Event Log (Event ID 4625) for zero-latency triggers.
-- **Privacy Focused**: All photos are stored locally on your machine.
+## 🚀 One-Click Setup (Quick Start)
 
-## 🌐 Landing Page
+We have simplified the installation into a single automated script. **No manual library installs or complex command-line work required.**
 
-The project also includes a modern, responsive landing page built with **React** and **Vite**. You can find it in the `landing-page/` directory.
+1.  **Download & Extract**
+    - [Download the ZIP](https://github.com/OneforAll-Deku/Intruder-Guard/archive/refs/heads/main.zip) and extract it to a folder on your Windows PC.
+2.  **Run the Installer**
+    - Locate the file named **`Setup_Python.bat`**.
+    - **Right-click it** and select **"Run as Administrator"**.
+    - *The script will automatically install Python libraries and launch the Manager.*
+3.  **Activate & Lock**
+    - In the Dashboard, click **"ACTIVATE PROTECTION"**.
+    - **Lock your screen (Win + L)** and test it with a wrong password!
 
-### 🛠️ How to Run the Landing Page Locally:
-1. Navigate to the folder: `cd landing-page`
-2. Install dependencies: `npm install`
-3. Start the dev server: `npm run dev`
+---
 
-## 🚀 Installation
+## 📂 Understanding the Structure
 
-1. **Run `Setup_Python.bat`**
-   - This script will install the required Python dependencies (`opencv-python`, `customtkinter`, `pillow`) and launch the application.
-   - You must have Python installed and added to your PATH.
+This repository is designed to be lean and powerful. Here is what you are using:
 
-2. **Activate Protection**
-   - In the GUI that opens, click **"ACTIVATE PROTECTION"**.
-   - This will configure the Windows Audit Policy and create the background trigger.
+| Component | The "Why" |
+| :--- | :--- |
+| **`Setup_Python.bat`** | **The Entry Point.** Handles Python detection, pip dependency installation, and GUI startup. |
+| **`intruder_guard.py`** | **The Heart.** Contains the management dashboard and the backend camera logic. |
+| **`requirements.txt`** | **The Checklist.** Tells Python exactly which libraries (OpenCV, CustomTkinter) to fetch. |
+| **`landing-page/`** | **The Showcase.** A custom React + Vite product page for high-end project display. |
 
-## 🧪 How to Test
+---
 
-1. **Lock your computer** (Win + L).
-2. At the Windows Login Screen, **enter a WRONG password**.
-3. Log in with your correct password.
-4. Open the **Gallery**:
-   - Run the IntruderGuard app and click **"VIEW GALLERY"**.
+## 📚 What to Learn (How it Works)
 
-## 🔧 Technical Details
+If you're a developer or a student curious about how this works, here is the technical "Secret Sauce":
 
-- **Trigger**: The background task waits for **Event ID 4625** (Account failed to log on).
-- **Execution**: When triggered, it runs `python intruder_guard.py /capture` as the **SYSTEM** account.
-- **Capture Backend**: Uses OpenCV with the DirectShow (`CAP_DSHOW`) backend for reliable camera access in background sessions.
+### 1. Kernel Hooking (The Trigger)
+Instead of "polling" or "guessing," we hook into the **Windows Security Kernel**. When a login fails, Windows generates **Event ID 4625**. We register a listener with the **Task Scheduler** that fires only when that specific ID appears. This means **0% CPU usage** while your PC is idling.
 
-## 📋 Requirements
+### 2. Ghost Process (The Capture)
+The actual photo capture runs as a `pythonw.exe` process under the **SYSTEM** user account. 
+- **SYSTEM account**: Allows camera access even when no one is logged in.
+- **`pythonw`**: Suppresses the terminal window so an intruder never sees a "popup."
 
-- Windows 10 or Windows 11.
-- Python 3.10+.
-- A functional Webcam.
-- Administrator rights (to install the scheduled task).
+### 3. Forensic Gallery (The Management)
+We use a high-contrast **UI (CustomTkinter)** to browse the photos. These are stored with restricted permissions, so they can't be easily found or deleted by casual users.
 
-## ❓ Troubleshooting
+---
 
-- **No photos captured?**
-  - Check `C:\ProgramData\IntruderGuard\debug_log.txt` for errors.
-  - Verify your webcam is connected and not blocked by a privacy shutter.
-  - Ensure "Logon" auditing is enabled (the app tries to do this automatically).
+## 📋 Requirements & Privacy
+- **OS**: Windows 10 / 11 (Admin rights required).
+- **Hardward**: Any integrated or USB webcam.
+- **Privacy**: **Everything is local.** No photos are uploaded to the cloud or sent to our servers. Your security is your own.
+
+---
 
 ## ⚠️ Disclaimer
+Used for personal security and educational research. Please comply with local privacy laws regarding surveillance.
 
-This tool is for **personal security / educational purposes only**. You are responsible for complying with all local laws regarding privacy and surveillance.
+---
+© 2026 IntruderGuard | [v2.0.0 Release Notes](https://github.com/OneforAll-Deku/Intruder-Guard/releases)

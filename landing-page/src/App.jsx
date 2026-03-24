@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Camera, User, Clock, Lock, ShieldCheck, Activity } from 'lucide-react'
+import { Camera, User, Clock, Lock, ShieldCheck, Activity, Github, Twitter, Mail } from 'lucide-react'
 import { InteractiveFolder } from './InteractiveFolder'
 import './index.css'
 
@@ -337,7 +337,35 @@ export default function App() {
                           {'>>'} {log}
                       </div>
                   ))}
-                  <div className="flicker" style={{ width: '12px', height: '24px', background: 'var(--color-crimson)', display: 'inline-block' }}></div>
+                      <div className="flicker" style={{ width: '12px', height: '24px', background: 'var(--color-crimson)', display: 'inline-block' }}></div>
+              </div>
+          </section>
+
+          <section className="readable-section jitter-slower" style={{ textAlign: 'center', borderStyle: 'double', borderWidth: '10px', background: 'var(--color-white)' }}>
+              <div className="section-label">CONNECT // EXTERNAL_LINKS</div>
+              <h2 style={{ 
+                  fontFamily: 'var(--font-mono)', 
+                  fontSize: '2rem', 
+                  borderBottom: '4px solid var(--color-black)', 
+                  display: 'inline-block',
+                  marginBottom: '3rem',
+                  fontWeight: 900,
+                  paddingBottom: '0.2rem'
+              }}>FOLLOW THE SIGNAL</h2>
+              
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap' }}>
+                  <a href="https://github.com/OneforAll-Deku" target="_blank" rel="noopener noreferrer" className="social-link" title="GitHub">
+                      <Github size={40} strokeWidth={3} />
+                      <span>GITHUB</span>
+                  </a>
+                  <a href="https://twitter.com/PRATYAKSHRAJ11" target="_blank" rel="noopener noreferrer" className="social-link" title="@PRATYAKSHRAJ11">
+                      <Twitter size={40} strokeWidth={3} />
+                      <span>X / TWITTER</span>
+                  </a>
+                  <a href="mailto:newraj990@gmail.com" className="social-link" title="newraj990@gmail.com">
+                      <Mail size={40} strokeWidth={3} />
+                      <span>GMAIL</span>
+                  </a>
               </div>
           </section>
 
