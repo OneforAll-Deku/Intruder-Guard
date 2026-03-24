@@ -48,12 +48,6 @@ export default function App() {
       .then(data => setDownloads(5 + data.count))
       .catch(() => setDownloads(5));
 
-    // Simulate live concurrent traffic
-    const trafficInterval = setInterval(() => {
-      if (Math.random() > 0.6) {
-        setPageVisits(prev => prev + 1);
-      }
-    }, 3000);
     // 1. SIMPLE JITTER FOR BRAND MOTION
     const elements = document.querySelectorAll('.jitter-el')
     const jitterInterval = setInterval(() => {
@@ -64,21 +58,8 @@ export default function App() {
         });
     }, 100);
 
-    // 2. LIVE FEED SIMULATOR
-    const feedInterval = setInterval(() => {
-        setLogs(prev => {
-            const newLogs = [...prev]
-            if (newLogs.length > 5) newLogs.shift()
-            const code = Math.floor(10000 + Math.random() * 90000)
-            newLogs.push(`>> LOG_ID: ${code} // FAILURE // PHOTOCAP_READY`)
-            return newLogs
-        })
-    }, 4000)
-
     return () => {
         clearInterval(jitterInterval)
-        clearInterval(feedInterval)
-        clearInterval(trafficInterval)
     }
   }, [])
 
@@ -291,10 +272,6 @@ export default function App() {
 
           <section className="stat-banner container jitter-slower">
               <div className="stat-item">
-                  <h2>{pageVisits}</h2>
-                  <p>PAGE VISITS</p>
-              </div>
-              <div className="stat-item" style={{ borderLeft: '2px solid rgba(255,255,255,0.1)', paddingLeft: '4rem' }}>
                   <h2>{downloads}</h2>
                   <p>INSTALLS</p>
               </div>
