@@ -20,7 +20,10 @@ export default function App() {
   const [isVaultOpen, setIsVaultOpen] = useState(false)
   const [selectedFile, setSelectedFile] = useState(0);
   const [pageVisits, setPageVisits] = useState(400);
-  const [downloads, setDownloads] = useState(5);
+  const [downloads, setDownloads] = useState(() => {
+    const saved = localStorage.getItem('ig_downloads_count');
+    return saved ? parseInt(saved, 10) : 5;
+  });
   const [logs, setLogs] = useState([
     "BOOTSTRAP_READY",
     "KERNEL_HOOK_ACTIVE",
@@ -45,8 +48,13 @@ export default function App() {
       
     fetch('https://api.counterapi.dev/v1/intruderguard_vTest_final/downloads')
       .then(res => res.json())
-      .then(data => setDownloads(5 + data.count))
-      .catch(() => setDownloads(5));
+      .then(data => {
+        const apiValue = 5 + (data.count || 0);
+        setDownloads(prev => Math.max(prev, apiValue));
+      })
+      .catch(() => {
+        // If API fails, keep current state (initialized from localStorage or default)
+      });
 
     // 1. SIMPLE JITTER FOR BRAND MOTION
     const elements = document.querySelectorAll('.jitter-el')
@@ -62,6 +70,10 @@ export default function App() {
         clearInterval(jitterInterval)
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('ig_downloads_count', downloads);
+  }, [downloads]);
 
   const handleDownload = () => {
     setDownloads(prev => (typeof prev === 'number' ? prev + 1 : parseInt(String(prev).replace(/,/g, '')) + 1));
