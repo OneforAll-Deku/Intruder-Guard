@@ -170,33 +170,33 @@ export default function App() {
               </p>
               
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)', position: 'relative' }}>
+                  <div className="kernel-card danger">
                       <span style={{ position: 'absolute', top: '10px', right: '10px', background: 'var(--color-crimson)', color: 'white', fontSize: '0.65rem', fontWeight: 900, padding: '2px 6px', border: '2px solid var(--color-black)' }}>DEFAULT ON</span>
                       <div style={{ background: 'rgba(230, 30, 67, 0.15)', color: 'var(--color-crimson)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-crimson)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4625</div>
                       <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Logon Failure</h4>
                       <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Fires when a login attempt fails. Primary indicator of physical password-guessing attacks.</p>
                   </div>
-                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                  <div className="kernel-card warning">
                       <div style={{ background: 'rgba(212, 175, 55, 0.15)', color: 'var(--color-gold)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-gold)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4720</div>
                       <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Account Created</h4>
                       <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Triggers when a new local user is created. Detects backdoor creation attempts.</p>
                   </div>
-                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                  <div className="kernel-card warning">
                       <div style={{ background: 'rgba(212, 175, 55, 0.15)', color: 'var(--color-gold)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-gold)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4735</div>
                       <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Group Modified</h4>
                       <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Alerts on local security group modifications. Prevents privilege escalation attempts.</p>
                   </div>
-                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                  <div className="kernel-card info">
                       <div style={{ background: 'rgba(18, 18, 18, 0.05)', color: 'var(--color-black)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-black)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4624</div>
                       <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Successful Logon</h4>
                       <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Logs when a user session starts. Creates a comprehensive audit trail of logons.</p>
                   </div>
-                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                  <div className="kernel-card info">
                       <div style={{ background: 'rgba(18, 18, 18, 0.05)', color: 'var(--color-black)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-black)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4647</div>
                       <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>User Logoff</h4>
                       <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Fires when a user session ends. Completes the timeline monitoring cycle.</p>
                   </div>
-                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                  <div className="kernel-card info">
                       <div style={{ background: 'rgba(18, 18, 18, 0.05)', color: 'var(--color-black)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-black)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4648</div>
                       <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Explicit Logon</h4>
                       <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Triggers when a process attempts to log on using explicit alternative credentials.</p>
