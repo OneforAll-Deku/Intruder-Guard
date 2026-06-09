@@ -1,6 +1,8 @@
 <div align="center">
   <br />
-  <img src="screenshots/logo.png" alt="IntruderGuard" width="400" />
+  <img src="screenshots/logo.png" alt="IntruderGuard" width="128" />
+  <h1>INTRUDERGUARD</h1>
+  <h3>The Ghost in the Kernel</h3>
   <br />
   <p>
     <strong>Automatic physical security and Event Log auditing for Windows.</strong>
