@@ -665,6 +665,18 @@ class IntruderGuardApp(ctk.CTk):
         self.resizable(True, True)
         self.configure(fg_color=self.BG)
 
+        # Set Window Icon
+        try:
+            icon_name = "Intruder Guard icon.ico"
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            icon_path = os.path.join(current_dir, icon_name)
+            if not os.path.exists(icon_path):
+                icon_path = os.path.join(INSTALL_DIR, icon_name)
+            if os.path.exists(icon_path):
+                self.iconbitmap(icon_path)
+        except Exception:
+            pass
+
         # State
         self._active = check_system_state()
         self._attempts = 0

@@ -41,12 +41,13 @@ echo [OK] Dependencies installed successfully.
 set INSTALL_DIR=C:\ProgramData\IntruderGuard
 if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
 
-echo [INFO] Syncing latest script to %INSTALL_DIR%...
+echo [INFO] Syncing latest script and assets to %INSTALL_DIR%...
 copy /y "%~dp0intruder_guard.py" "%INSTALL_DIR%\intruder_guard.py" >nul
+copy /y "%~dp0Intruder Guard icon.ico" "%INSTALL_DIR%\Intruder Guard icon.ico" >nul
 if %errorlevel% equ 0 (
-    echo [OK] Script synced — background worker will use the latest version.
+    echo [OK] Script and assets synced — background worker will use the latest version.
 ) else (
-    echo [WARN] Could not sync script to %INSTALL_DIR%. Run as Administrator if needed.
+    echo [WARN] Could not sync assets to %INSTALL_DIR%. Run as Administrator if needed.
 )
 
 :: ──────────────────────────────────────────────
