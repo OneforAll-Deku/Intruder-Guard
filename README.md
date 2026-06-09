@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <h1>🛡️ INTRUDERGUARD</h1>
+  <img src="screenshots/logo.png" alt="IntruderGuard" width="400" />
   <h3>The Ghost in the Kernel</h3>
   <br />
   <p>
