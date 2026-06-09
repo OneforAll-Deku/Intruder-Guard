@@ -33,6 +33,17 @@ IntruderGuard is a high-performance system security utility that hooks directly 
 *   **🛠️ System Diagnostics & Logs Exporter**:
     *   Verify webcam detection, Logon Auditing state, Scheduled Task registration, and file system permissions with one click.
     *   Export comprehensive forensic reports and raw system audit logs.
+---
+
+## 📸 App Interface
+
+Here is a preview of the IntruderGuard Console interface:
+
+| 🖥️ Dashboard | ⚙️ Settings |
+|:---:|:---:|
+| ![Dashboard](screenshots/dashboard.png) | ![Settings](screenshots/settings.png) |
+| **🔍 System Logs** | **📁 Evidence Gallery** |
+| ![System Logs](screenshots/system_logs.png) | ![Evidence Gallery](screenshots/evidence_gallery.png) |
 
 ---
 
