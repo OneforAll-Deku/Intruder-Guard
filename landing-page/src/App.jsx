@@ -84,21 +84,21 @@ export default function App() {
   return (
     <>
       <header className="fixed-banner top">
-        [SEC_STATUS: ACTIVE] // INTRUDERGUARD V2.0 // DEPLOYED: GHOST_PROCESS // SYSTEM: PC_ADMIN //
+        [SEC_STATUS: ACTIVE] // INTRUDERGUARD V4.2 // DEPLOYED: GHOST_PROCESS // SYSTEM: PC_ADMIN //
       </header>
 
       <main style={{ paddingTop: '2.5rem', paddingBottom: '5rem' }}>
           
           <section className="readable-section jitter-el" style={{ border: '12px solid var(--color-black)', background: 'var(--color-white)', marginTop: '2rem', padding: '3.5rem' }}>
               <div style={{ display: 'flex', gap: '1rem', fontStyle: 'italic', fontWeight: 900, fontSize: '0.8rem', opacity: 0.6, marginBottom: '1.5rem' }}>
-                  <span>V2.0 STABLE</span> / <span>PYTHON 3.13</span> / <span>WINDOWS 11 COMPATIBLE</span>
+                  <span>V4.2 STABLE [UPDATED]</span> / <span>PYTHON 3.13</span> / <span>WINDOWS 11 COMPATIBLE</span>
               </div>
               <h1 className="title-large" style={{ fontSize: 'clamp(4rem, 12vw, 10rem)', color: 'var(--color-crimson)', margin: 0 }}>INTRUDER</h1>
               <h1 className="title-large" style={{ fontSize: 'clamp(4rem, 12vw, 10rem)', marginTop: '-1.5rem', WebkitTextStroke: '2px var(--color-black)', color: 'transparent' }}>GUARD</h1>
               
               <p style={{ fontSize: '1.6rem', fontWeight: 900, borderLeft: '10px solid var(--color-crimson)', paddingLeft: '2rem', marginTop: '1.5rem', maxWidth: '850px' }}>
-                  The most aggressive physical security tool for Windows.
-                  Automatically captures photographic proof the moment a failed login attempt is detected.
+                  The most aggressive physical security and Event Log auditing tool for Windows.
+                  Automatically captures photographic proof the moment a failed login or critical security event occurs.
               </p>
 
               <div style={{ marginTop: '2.5rem', display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
@@ -139,7 +139,7 @@ export default function App() {
                   </div>
                   <div className="pipeline-node">
                       <span className="node-id">EVT_HOOK</span>
-                      <h4>EVENT 4625</h4>
+                      <h4>SEC_KERNEL</h4>
                   </div>
                   <div className="pipeline-node">
                       <span className="node-id">TRIGGER_SYS</span>
@@ -157,9 +157,51 @@ export default function App() {
 
               <p style={{ fontWeight: 700, fontSize: '1.2rem', marginTop: '1.5rem' }}>
                   Unlike User-Space apps, we hook directly into the Windows Security Pipeline. 
-                  When the Kernel records a Logon Failure, a high-privilege Ghost Task is fired instantly. 
+                  When the Kernel registers any of the monitored security events, a high-privilege Ghost Task is fired instantly. 
                   Zero window flashing. Zero terminal popups.
               </p>
+          </section>
+
+          <section className="readable-section jitter-el" style={{ border: '8px solid var(--color-black)', background: 'var(--color-white)' }}>
+              <div className="section-label">SEC_KERNEL // MONITORED_EVENTS</div>
+              <h2 className="title-large">THE SECURITY <span className="accent-text">KERNEL</span></h2>
+              <p style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '2rem' }}>
+                  IntruderGuard v4.2 monitors a modular set of Windows Security Event IDs. Stage policies via the dashboard's Event Selector:
+              </p>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)', position: 'relative' }}>
+                      <span style={{ position: 'absolute', top: '10px', right: '10px', background: 'var(--color-crimson)', color: 'white', fontSize: '0.65rem', fontWeight: 900, padding: '2px 6px', border: '2px solid var(--color-black)' }}>DEFAULT ON</span>
+                      <div style={{ background: 'rgba(230, 30, 67, 0.15)', color: 'var(--color-crimson)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-crimson)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4625</div>
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Logon Failure</h4>
+                      <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Fires when a login attempt fails. Primary indicator of physical password-guessing attacks.</p>
+                  </div>
+                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                      <div style={{ background: 'rgba(212, 175, 55, 0.15)', color: 'var(--color-gold)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-gold)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4720</div>
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Account Created</h4>
+                      <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Triggers when a new local user is created. Detects backdoor creation attempts.</p>
+                  </div>
+                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                      <div style={{ background: 'rgba(212, 175, 55, 0.15)', color: 'var(--color-gold)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-gold)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4735</div>
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Group Modified</h4>
+                      <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Alerts on local security group modifications. Prevents privilege escalation attempts.</p>
+                  </div>
+                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                      <div style={{ background: 'rgba(18, 18, 18, 0.05)', color: 'var(--color-black)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-black)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4624</div>
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Successful Logon</h4>
+                      <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Logs when a user session starts. Creates a comprehensive audit trail of logons.</p>
+                  </div>
+                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                      <div style={{ background: 'rgba(18, 18, 18, 0.05)', color: 'var(--color-black)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-black)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4647</div>
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>User Logoff</h4>
+                      <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Fires when a user session ends. Completes the timeline monitoring cycle.</p>
+                  </div>
+                  <div style={{ background: 'var(--color-white)', border: '4px solid var(--color-black)', padding: '1.5rem', boxShadow: '8px 8px 0 var(--color-black)' }}>
+                      <div style={{ background: 'rgba(18, 18, 18, 0.05)', color: 'var(--color-black)', display: 'inline-block', fontWeight: 900, fontSize: '0.95rem', padding: '2px 8px', border: '2px solid var(--color-black)', fontFamily: 'var(--font-mono)', marginBottom: '0.8rem' }}>4648</div>
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.3rem', marginBottom: '0.4rem' }}>Explicit Logon</h4>
+                      <p style={{ fontSize: '0.85rem', opacity: 0.8 }}>Triggers when a process attempts to log on using explicit alternative credentials.</p>
+                  </div>
+              </div>
           </section>
 
           <section className="readable-section dark jitter-el" style={{ background: 'var(--color-black)' }}>
@@ -234,11 +276,12 @@ export default function App() {
                   </div>
 
                   <div className="guide-step-card">
-                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.5rem', color: 'var(--color-crimson)', marginBottom: '1rem' }}>03. ACTIVATE CORE</h4>
-                      <p style={{ fontWeight: 700, opacity: 0.7, marginBottom: '1.5rem' }}>Open the dashboard, click "ACTIVATE" and lock your screen.</p>
+                      <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '1.5rem', color: 'var(--color-crimson)', marginBottom: '1rem' }}>03. CUSTOMIZE & RUN</h4>
+                      <p style={{ fontWeight: 700, opacity: 0.7, marginBottom: '1.5rem' }}>Verify state, toggle event IDs via the Edit dialog, and start monitoring.</p>
                       <code style={{ display: 'block', background: 'var(--color-black)', color: '#00FF41', padding: '1.5rem', borderLeft: '8px solid var(--color-crimson)', fontSize: '0.9rem', fontWeight: 900 }}>
                           python intruder_guard.py<br/>
-                          Status: ACTIVATED
+                          [✓] Diagnostics: System OK<br/>
+                          [✓] Active IDs: 4625, 4720
                       </code>
                   </div>
               </div>
@@ -332,6 +375,18 @@ export default function App() {
                       <h4>What if I forget my password?</h4>
                       <p>The system will snapshot you as well. You can simply clear your own photos from the <code>/gallery</code> once you log in.</p>
                   </div>
+                  <div className="faq-item">
+                      <h4>How do I check if the monitor is active?</h4>
+                      <p>Launch the console to check the status bar (should say <code>PROTECTED — MONITORING ACTIVE</code>) or run <code>schtasks /query /tn IntruderGuard_Capture</code> in PowerShell.</p>
+                  </div>
+                  <div className="faq-item">
+                      <h4>What is the Evidence Vault retention policy?</h4>
+                      <p>In the Settings tab, you can set the policy to automatically delete images older than 7, 30, or 90 days. You can also select 'Never delete' for perpetual logging.</p>
+                  </div>
+                  <div className="faq-item">
+                      <h4>How do I turn off and delete (uninstall) the app?</h4>
+                      <p>Click "DEACTIVATE" in the GUI to unregister hooks. To completely uninstall, delete the <code>C:\ProgramData\IntruderGuard</code> directory and the source folder.</p>
+                  </div>
               </div>
           </section>
 
@@ -379,7 +434,7 @@ export default function App() {
       </main>
 
       <footer className="fixed-banner bottom">
-        [PROTECT_CORE] // [EVIDENCE_PERSIST] // [SILENT_GUARD] // INTRUDERGUARD 2026 //
+        [PROTECT_CORE] // [EVIDENCE_PERSIST] // [SILENT_GUARD] // INTRUDERGUARD V4.2 //
       </footer>
     </>
   )
