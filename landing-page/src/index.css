@@ -343,13 +343,15 @@ html, body {
   color: var(--color-black);
   border-color: var(--color-black);
   box-shadow: 12px 12px 0 var(--color-crimson);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .cta-massive.secondary:hover {
   background: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
-  box-shadow: 6px 6px 0 var(--color-crimson);
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 6px 6px 0 var(--color-crimson);
+  transform: translate(6px, 6px) scale(1.02);
 }
 
 .social-link {
