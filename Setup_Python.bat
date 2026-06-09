@@ -1,45 +1,58 @@
 @echo off
-title IntruderGuard (Python) Setup
+title IntruderGuard Setup
+setlocal
 
-echo ===========================================
-echo      IntruderGuard - Python Setup
-echo ===========================================
-echo.
+cd /d "%~dp0"
 
-:: Check for python
+:: ──────────────────────────────────────────────
+:: Step 1: Check Python is installed
+:: ──────────────────────────────────────────────
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo Python is not installed or not added to your PATH!
-    echo Please install Python 3 from python.org and try again.
+    echo [ERROR] Python is not installed or not in PATH.
+    echo         Download and install from: https://python.org
     pause
-    exit /b
+    exit /b 1
 )
 
-:: Check if requirements are already installed to avoid unnecessary pings
+:: ──────────────────────────────────────────────
+:: Step 2: Check if required packages are present
+:: If not, install from requirements.txt
+:: ──────────────────────────────────────────────
 python -c "import customtkinter, cv2, PIL" >nul 2>&1
-if %errorlevel% equ 0 (
-    echo Dependencies already verified. Starting IntruderGuard...
-    goto :start_app
-)
+if %errorlevel% equ 0 goto :sync_and_launch
 
-echo Required libraries are missing. Checking for updates...
-echo (If this hangs, please check your internet connection)
-
-echo Upgrading pip...
-python -m pip install --upgrade pip --quiet --no-warn-script-location >nul 2>&1
-
-echo Installing required Python packages...
+echo [INFO] Installing required dependencies...
 python -m pip install -r requirements.txt --quiet --no-warn-script-location
 if %errorlevel% neq 0 (
-    echo.
-    echo Failed to install dependencies! Please check your internet connection 
-    echo or run this script in an administrative command prompt.
+    echo [ERROR] Dependency install failed. Check your internet connection.
     pause
-    exit /b
+    exit /b 1
+)
+echo [OK] Dependencies installed successfully.
+
+:: ──────────────────────────────────────────────
+:: Step 3: Sync latest intruder_guard.py to the
+:: install directory (C:\ProgramData\IntruderGuard)
+:: so the Task Scheduler background worker always
+:: runs the most up-to-date version of the script.
+:: ──────────────────────────────────────────────
+:sync_and_launch
+set INSTALL_DIR=C:\ProgramData\IntruderGuard
+if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
+
+echo [INFO] Syncing latest script to %INSTALL_DIR%...
+copy /y "%~dp0intruder_guard.py" "%INSTALL_DIR%\intruder_guard.py" >nul
+if %errorlevel% equ 0 (
+    echo [OK] Script synced — background worker will use the latest version.
+) else (
+    echo [WARN] Could not sync script to %INSTALL_DIR%. Run as Administrator if needed.
 )
 
-:start_app
-echo.
-echo Starting IntruderGuard Manager...
-echo.
-python intruder_guard.py
+:: ──────────────────────────────────────────────
+:: Step 4: Launch the main GUI app
+:: (Python will request UAC elevation internally
+::  via ShellExecuteW if not already admin)
+:: ──────────────────────────────────────────────
+echo [INFO] Launching IntruderGuard...
+python "%~dp0intruder_guard.py"
