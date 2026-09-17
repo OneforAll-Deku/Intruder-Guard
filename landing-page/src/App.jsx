@@ -430,7 +430,7 @@ export default function App() {
                       <Twitter size={40} strokeWidth={3} />
                       <span>X / TWITTER</span>
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link" title="LinkedIn">
+                  <a href="https://www.linkedin.com/in/pratykash-raj-singh-a33aa9325/" target="_blank" rel="noopener noreferrer" className="social-link" title="LinkedIn">
                       <Linkedin size={40} strokeWidth={3} />
                       <span>LINKEDIN</span>
                   </a>
