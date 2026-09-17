@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Camera, User, Clock, Lock, ShieldCheck, Activity, Github, Twitter, Mail } from 'lucide-react'
+import { Camera, User, Clock, Lock, ShieldCheck, Activity, Github, Twitter, Mail, Linkedin } from 'lucide-react'
 import { InteractiveFolder } from './InteractiveFolder'
 import './index.css'
 
@@ -429,6 +429,10 @@ export default function App() {
                   <a href="https://twitter.com/PRATYAKSHRAJ11" target="_blank" rel="noopener noreferrer" className="social-link" title="@PRATYAKSHRAJ11">
                       <Twitter size={40} strokeWidth={3} />
                       <span>X / TWITTER</span>
+                  </a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link" title="LinkedIn">
+                      <Linkedin size={40} strokeWidth={3} />
+                      <span>LINKEDIN</span>
                   </a>
                   <a href="mailto:newraj990@gmail.com" className="social-link" title="newraj990@gmail.com">
                       <Mail size={40} strokeWidth={3} />
