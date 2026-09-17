@@ -83,18 +83,24 @@ export default function App() {
 
   return (
     <>
-      <header className="fixed-banner top">
-        [SEC_STATUS: ACTIVE] // INTRUDERGUARD V4.2 // DEPLOYED: GHOST_PROCESS // SYSTEM: PC_ADMIN //
+      <header className="fixed-banner top" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+        <img src="/logo.png" alt="IntruderGuard Logo" style={{ width: '18px', height: '18px', borderRadius: '4px' }} />
+        <span>[SEC_STATUS: ACTIVE] // INTRUDERGUARD V4.2 // DEPLOYED: GHOST_PROCESS // SYSTEM: PC_ADMIN //</span>
       </header>
 
       <main style={{ paddingTop: '2.5rem', paddingBottom: '5rem' }}>
           
           <section className="readable-section jitter-el" style={{ border: '12px solid var(--color-black)', background: 'var(--color-white)', marginTop: '2rem', padding: '3.5rem' }}>
-              <div style={{ display: 'flex', gap: '1rem', fontStyle: 'italic', fontWeight: 900, fontSize: '0.8rem', opacity: 0.6, marginBottom: '1.5rem' }}>
-                  <span>V4.2 STABLE [UPDATED]</span> / <span>PYTHON 3.13</span> / <span>WINDOWS 11 COMPATIBLE</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                  <img src="/logo.png" alt="IntruderGuard Logo" style={{ width: '90px', height: '90px', objectFit: 'contain', filter: 'drop-shadow(4px 4px 0px #000)' }} />
+                  <div>
+                      <div style={{ display: 'flex', gap: '1rem', fontStyle: 'italic', fontWeight: 900, fontSize: '0.8rem', opacity: 0.6, marginBottom: '0.5rem' }}>
+                          <span>V4.2 STABLE [UPDATED]</span> / <span>PYTHON 3.13</span> / <span>WINDOWS 11 COMPATIBLE</span>
+                      </div>
+                      <h1 className="title-large" style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)', color: 'var(--color-crimson)', margin: 0, lineHeight: 0.9 }}>INTRUDER</h1>
+                      <h1 className="title-large" style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)', WebkitTextStroke: '2px var(--color-black)', color: 'transparent', margin: 0, lineHeight: 0.9 }}>GUARD</h1>
+                  </div>
               </div>
-              <h1 className="title-large" style={{ fontSize: 'clamp(4rem, 12vw, 10rem)', color: 'var(--color-crimson)', margin: 0 }}>INTRUDER</h1>
-              <h1 className="title-large" style={{ fontSize: 'clamp(4rem, 12vw, 10rem)', marginTop: '-1.5rem', WebkitTextStroke: '2px var(--color-black)', color: 'transparent' }}>GUARD</h1>
               
               <p style={{ fontSize: '1.6rem', fontWeight: 900, borderLeft: '10px solid var(--color-crimson)', paddingLeft: '2rem', marginTop: '1.5rem', maxWidth: '850px' }}>
                   The most aggressive physical security and Event Log auditing tool for Windows.
